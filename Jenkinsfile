@@ -13,7 +13,7 @@ node {
         stage ('Tests') {
 
 	        sh "echo 'running tests...'"
-	        sh "./mvnw tests"
+	        sh "./mvnw test"
 
         }
 
