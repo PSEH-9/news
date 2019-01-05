@@ -20,8 +20,6 @@ import com.example.news.demonews.model.News;
 @Component
 public class NewsService {
 
-    private static List<News> newslist = new ArrayList<>();
-
     private static final String NEWS_URL = "https://newsapi.org/v2/top-headlines";
     private static final String API_KEY = "ccaf5d41cc5140c984818c344edcc14d";
 
@@ -35,7 +33,7 @@ public class NewsService {
             query = "?country="+country+"&category="+category+"&apiKey="+API_KEY;
         }
         else {
-            query = "?q="+keyword+"country="+country+"&category="+category+"&apiKey="+API_KEY;
+            query = "?q="+keyword+"&country="+country+"&category="+category+"&apiKey="+API_KEY;
         }
 
         try {
@@ -70,7 +68,7 @@ public class NewsService {
     }
 
     private List<News> parseJSON(String data, String category, String country, String keyword){
-
+        List<News> newslist = new ArrayList<>();
         try{
             JSONParser parser = new JSONParser();
             JSONObject dataobj = (JSONObject)parser.parse(data);
